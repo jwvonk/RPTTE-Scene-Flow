@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPTTE Scene FLow Prototype</title>
+    <script src = "phaser.js"></script>
+</head>
+<body>
+<script>
+class titleScreen extends Phaser.Scene{
+    constructor(){
+        super('titleScreen');
+    }
+    //Pixelate code credit: https://labs.phaser.io/edit.html?src=src/fx/pixelate/pixelate%20transition%20scene.js
+    init ()
+    {
+        this.cameras.main.fadeIn(100);
+        const fxCamera = this.cameras.main.postFX.addPixelate(40);
+        this.add.tween({
+            targets: fxCamera,
+            duration: 700,
+            amount: -1,
+        });
+    }
+    create(){
+        this.add.text(50, 100, "[TITLE]")
+        this.add.text(200, 200, "(tap to begin)")
+        const pixelated = this.cameras.main.postFX.addPixelate(-1);
+        this.input.on('pointerdown', () => {
+            // Transition to next scene
+            this.add.tween({
+                targets: pixelated,
+                duration: 700,
+                amount: 40,
+                onComplete: () => {
+                    this.cameras.main.fadeOut(100);
+                    this.scene.start('transitionScene');
+                }
+            })
+        })
+    }
+
+    update(){
+        
+    }
+
+}
+class gameplayScene1 extends Phaser.Scene { 
+    constructor() {
+        super('gameplayScene1');
+    }
+    init ()
+    {
+        this.cameras.main.fadeIn(100);
+        const fxCamera = this.cameras.main.postFX.addPixelate(40);
+        this.add.tween({
+            targets: fxCamera,
+            duration: 700,
+            amount: -1,
+        });
+    }
+    create(){
+        this.add.text(50, 100, "[gameplay: two slugs]")
+        this.add.text(50, 300, "(Press W to Beat Level)");
+        const pixelated = this.cameras.main.postFX.addPixelate(-1);
+        this.input.keyboard.on('keydown-W', () => {
+            // Transition to next scene
+            this.add.tween({
+                targets: pixelated,
+                duration: 700,
+                amount: 40,
+                onComplete: () => {
+                    this.cameras.main.fadeOut(100);
+                    this.scene.start('transitionScene2');
+                }
+            })
+        })
+    }
+    
+}
+
+class gameplayScene2 extends Phaser.Scene{
+    constructor(){
+        super('gameplayScene2');
+    }
+    init ()
+    {
+        this.cameras.main.fadeIn(100);
+        const fxCamera = this.cameras.main.postFX.addPixelate(40);
+        this.add.tween({
+            targets: fxCamera,
+            duration: 700,
+            amount: -1,
+        });
+    }
+    create() {
+        this.add.text(50, 100, "[gameplay: two snails]")
+        this.add.text(50, 300, "(Press W to Beat Level)");
+        const pixelated = this.cameras.main.postFX.addPixelate(-1);
+        this.input.keyboard.on('keydown-W', () => {
+            // Transition to next scene
+            this.add.tween({
+                targets: pixelated,
+                duration: 700,
+                amount: 40,
+                onComplete: () => {
+                    this.cameras.main.fadeOut(100);
+                    this.scene.start('transitionScene3');
+                }
+            })
+        });
+    }
+    
+}
+class gameplayScene3 extends Phaser.Scene{
+    constructor(){
+        super('gameplayScene3');
+    }
+    init ()
+    {
+        this.cameras.main.fadeIn(100);
+        const fxCamera = this.cameras.main.postFX.addPixelate(40);
+        this.add.tween({
+            targets: fxCamera,
+            duration: 700,
+            amount: -1,
+        });
+    }
+    create() {
+        this.add.text(50, 100, "[gameplay: Slugs and Snails]")
+        this.add.text(50, 300, "(Press W to Beat Level)");
+        const pixelated = this.cameras.main.postFX.addPixelate(-1);
+        this.input.keyboard.on('keydown-W', () => {
+            // Transition to next scene
+            this.add.tween({
+                targets: pixelated,
+                duration: 700,
+                amount: 40,
+                onComplete: () => {
+                    this.cameras.main.fadeOut(100);
+                    this.scene.start('transitionScene4');
+                }
+            })
+        });
+    }
+    
+}
+
+class transitionScene extends Phaser.Scene{
+    constructor() {
+        super('transitionScene');
+    }
+    init ()
+    {
+        this.cameras.main.fadeIn(100);
+        const fxCamera = this.cameras.main.postFX.addPixelate(40);
+        this.add.tween({
+            targets: fxCamera,
+            duration: 700,
+            amount: -1,
+        });
+    }
+    create(){
+        this.add.text(50, 100, "[MESSAGE CARD]")
+        this.add.text(200, 200, "(tap to continue)")
+        const pixelated = this.cameras.main.postFX.addPixelate(-1); //might delete, in case it breaks
+        this.input.on('pointerdown', () => {
+            // Transition to next scene
+            this.add.tween({
+                targets: pixelated,
+                duration: 700,
+                amount: 40,
+                onComplete: () => {
+                    this.cameras.main.fadeOut(100);
+                    this.scene.start('gameplayScene1');
+                }
+            })
+        })
+    }
+}
+
+
+class transitionScene2 extends Phaser.Scene{
+    constructor() {
+        super('transitionScene2');
+    }
+    init ()
+    {
+        this.cameras.main.fadeIn(100);
+        const fxCamera = this.cameras.main.postFX.addPixelate(40);
+        this.add.tween({
+            targets: fxCamera,
+            duration: 700,
+            amount: -1,
+        });
+    }
+    create(){
+        this.add.text(50, 100, "[MESSAGE CARD]")
+        this.add.text(200, 200, "(tap to continue)")
+        const pixelated = this.cameras.main.postFX.addPixelate(-1); //might delete, in case it breaks
+        this.input.on('pointerdown', () => {
+            // Transition to next scene
+            this.add.tween({
+                targets: pixelated,
+                duration: 700,
+                amount: 40,
+                onComplete: () => {
+                    this.cameras.main.fadeOut(100);
+                    this.scene.start('gameplayScene2');
+                }
+            })
+        })
+    }
+}
+
+class transitionScene3 extends Phaser.Scene{
+    constructor() {
+        super('transitionScene3');
+    }
+    init ()
+    {
+        this.cameras.main.fadeIn(100);
+        const fxCamera = this.cameras.main.postFX.addPixelate(40);
+        this.add.tween({
+            targets: fxCamera,
+            duration: 700,
+            amount: -1,
+        });
+    }
+    create(){
+        this.add.text(50, 100, "[MESSAGE CARD]")
+        this.add.text(200, 200, "(tap to continue)")
+        const pixelated = this.cameras.main.postFX.addPixelate(-1); //subject to change
+        this.input.on('pointerdown', () => {
+            // Transition to next scene
+            this.add.tween({
+                targets: pixelated,
+                duration: 700,
+                amount: 40,
+                onComplete: () => {
+                    this.cameras.main.fadeOut(100);
+                    this.scene.start('gameplayScene3');
+                }
+            })
+        })
+    }
+}
+
+class transitionScene4 extends Phaser.Scene{
+    constructor() {
+        super('transitionScene4');
+    }
+    init ()
+    {
+        this.cameras.main.fadeIn(100);
+        const fxCamera = this.cameras.main.postFX.addPixelate(40);
+        this.add.tween({
+            targets: fxCamera,
+            duration: 700,
+            amount: -1,
+        });
+    }
+    create(){
+        this.add.text(50, 100, "[MESSAGE CARD]")
+        this.add.text(200, 200, "(tap to continue)")
+        const pixelated = this.cameras.main.postFX.addPixelate(-1); //might delete
+        this.input.on('pointerdown', () => {
+            // Transition to next scene
+            this.add.tween({
+                targets: pixelated,
+                duration: 700,
+                amount: 40,
+                onComplete: () => {
+                    this.cameras.main.fadeOut(100);
+                    this.scene.start('victoryScene');
+                }
+            })
+        })
+    }
+}
+
+class victoryScreen extends Phaser.Scene {
+    constructor(){
+        super('victoryScene');
+    }
+    init ()
+    {
+        this.cameras.main.fadeIn(100);
+        const fxCamera = this.cameras.main.postFX.addPixelate(40);
+        this.add.tween({
+            targets: fxCamera,
+            duration: 700,
+            amount: -1,
+        });
+    }
+    create(){
+        this.add.text(50, 300, "Congratulations, You did it!");
+    }
+}
+
+
+let config = {
+    type: Phaser.WEBGL,
+    width: 800,
+    height: 800,
+    backgroundColor: 0x214026,
+    scene: [titleScreen, gameplayScene1, gameplayScene2, gameplayScene3, 
+    transitionScene, transitionScene2, transitionScene3, transitionScene4, victoryScreen],
+}
+
+let game = new Phaser.Game(config);
+
+</script> 
+</body>
+</html>
